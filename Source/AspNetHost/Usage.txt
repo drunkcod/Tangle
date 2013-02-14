@@ -1,5 +1,6 @@
 ﻿Usage is: $(Program) <site-path> <vdir> [options]
 
 Options:
+	--host=<host-name>			Host, defaults to 'localhost'.
 	--port=<port-number>		Port to bind to, defaults to 80.
 

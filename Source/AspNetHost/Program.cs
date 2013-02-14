@@ -12,6 +12,7 @@ namespace µHttpNet.AspNetHost
         {
             static readonly Regex OptionPattern = new Regex("--(?<option>.+)=(?<value>.*)");
 
+            public string Host = "localhost";
             public int Port = 80;
             public string SitePath = string.Empty;
             public string VirtualDirectory = string.Empty;
@@ -35,6 +36,7 @@ namespace µHttpNet.AspNetHost
                         var value = m.Groups["value"].Value;
                         switch(option) {
                             case "port": configuration.Port = int.Parse(value); break;
+                            case "host": configuration.Host = value; break;
                         }
                     }
                 }
@@ -57,7 +59,7 @@ namespace µHttpNet.AspNetHost
         public void Start() {
             var hostPath = new Uri(typeof(BasicAspNetHost).Assembly.CodeBase).LocalPath;
             File.Copy(hostPath, Path.Combine(Path.Combine(config.SitePath, "Bin"), Path.GetFileName(hostPath)), true);
-            var vPath = new Uri(string.Format("http://localhost:{0}{1}/", config.Port, config.VirtualDirectory));
+            var vPath = new Uri(string.Format("http://{0}:{1}{2}/", config.Host, config.Port, config.VirtualDirectory));
             host = BasicAspNetHost.CreateHost(config.SitePath, vPath);
             host.Start();
         }
