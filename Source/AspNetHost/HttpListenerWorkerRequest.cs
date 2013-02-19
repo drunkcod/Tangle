@@ -2,7 +2,7 @@
 using System.Net;
 using System.Web;
 
-namespace µHttpNet.AspNetHost
+namespace Tangle.AspNetHost
 {
     public class HttpListenerWorkerRequest : HttpWorkerRequest
     {

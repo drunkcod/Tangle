@@ -4,7 +4,7 @@ using System.IO;
 using System.ServiceProcess;
 using System.Text.RegularExpressions;
 
-namespace µHttpNet.AspNetHost
+namespace Tangle.AspNetHost
 {
     class Program
     {
