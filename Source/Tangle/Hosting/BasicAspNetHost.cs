@@ -2,8 +2,9 @@
 using System.Net;
 using System.Web;
 using System.Web.Hosting;
+using Tangle.Web;
 
-namespace Tangle.AspNetHost
+namespace Tangle.Hosting
 {
     public class BasicAspNetHost : MarshalByRefObject
     {

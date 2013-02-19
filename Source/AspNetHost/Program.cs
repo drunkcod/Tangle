@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.ServiceProcess;
 using System.Text.RegularExpressions;
+using Tangle.Hosting;
 
 namespace Tangle.AspNetHost
 {

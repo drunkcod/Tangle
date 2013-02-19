@@ -4,18 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C746482F-A181-4327-9BC1-478847C416B2}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{1DF1F8BB-25FF-4A7A-9192-BBB075F6A8AC}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tangle.AspNetHost</RootNamespace>
-    <AssemblyName>AspNetHost</AssemblyName>
+    <RootNamespace>Tangle</RootNamespace>
+    <AssemblyName>Tangle</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <OutputPath>$(SolutionDir)\Build\$(Configuration)</OutputPath>
     <IntermediateOutputPath>$(SolutionDir)\Build\Obj\$(Configuration)\$(MSBuildProjectName)</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <DefineConstants>TRACE</DefineConstants>
@@ -34,22 +32,15 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Usage.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Tangle\Tangle.csproj">
-      <Project>{1df1f8bb-25ff-4a7a-9192-bbb075f6a8ac}</Project>
-      <Name>Tangle</Name>
-    </ProjectReference>
+    <Compile Include="Hosting\BasicAspNetHost.cs" />
+    <Compile Include="Web\HttpListenerWorkerRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
