@@ -38,34 +38,28 @@ namespace Tangle.AspNetHost
 
         public override string GetUriPath() { return Request.Url.AbsolutePath; }
 
-        public override void SendKnownResponseHeader(int index, string value)
-        {
+        public override void SendKnownResponseHeader(int index, string value) {
             SendUnknownResponseHeader(HttpWorkerRequest.GetKnownResponseHeaderName(index), value);
         }
 
-        public override void SendResponseFromFile(IntPtr handle, long offset, long length)
-        {
+        public override void SendResponseFromFile(IntPtr handle, long offset, long length) {
             throw new NotImplementedException();
         }
 
-        public override void SendResponseFromFile(string filename, long offset, long length)
-        {
+        public override void SendResponseFromFile(string filename, long offset, long length) {
             throw new NotImplementedException();
         }
 
-        public override void SendResponseFromMemory(byte[] data, int length)
-        {
+        public override void SendResponseFromMemory(byte[] data, int length) {
             Response.OutputStream.Write(data, 0, length);
         }
 
-        public override void SendStatus(int statusCode, string statusDescription)
-        {
+        public override void SendStatus(int statusCode, string statusDescription) {
             Response.StatusCode = statusCode;
             Response.StatusDescription = statusDescription;
         }
 
-        public override void SendUnknownResponseHeader(string name, string value)
-        {
+        public override void SendUnknownResponseHeader(string name, string value) {
             Response.AddHeader(name, value);
         }
 
@@ -83,9 +77,9 @@ namespace Tangle.AspNetHost
 
         public override int ReadEntityBody(byte[] buffer, int offset, int size) { return Request.InputStream.Read(buffer, offset, size); }
 
-        public override int GetPreloadedEntityBody(byte[] buffer, int offset) { throw new NotImplementedException(); }
+        public override int GetPreloadedEntityBody(byte[] buffer, int offset) { return 0; }
 
-        public override int GetPreloadedEntityBodyLength() { throw new NotImplementedException(); }
+        public override int GetPreloadedEntityBodyLength() { return 0; }
 
         public override long GetBytesRead() { throw new NotImplementedException(); }
 

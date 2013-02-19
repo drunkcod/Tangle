@@ -17,7 +17,9 @@ namespace Tangle.AspNetHost
             public string SitePath = string.Empty;
             public string VirtualDirectory = string.Empty;
 
-            public List<string> Errors = new List<string>();
+            public readonly List<string> Errors = new List<string>();
+
+            public bool HasErrors { get { return Errors.Count > 0; } }
 
             void AddError(string format, params object[] args) { Errors.Add(string.Format(format, args)); }
 
@@ -70,7 +72,7 @@ namespace Tangle.AspNetHost
 
         static int Main(string[] args) {
             var config = Configuration.Parse(args);
-            if(config.Errors.Count > 0) {
+            if(config.HasErrors) {
                 foreach(var error in config.Errors)
                     Console.WriteLine(error);
                 Console.WriteLine();
